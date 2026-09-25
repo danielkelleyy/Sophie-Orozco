@@ -16,7 +16,7 @@ It's a single self-contained HTML file (inline CSS, no build step). Sophie's her
 ### Before it goes live
 Search the file for these and replace them:
 - `REGISTRATION_FORM_ACTION_URL`: where the signup form posts. Or replace the whole `<form class="reg-form">` with your GHL form or webinar registration embed.
-- `[VIDEO: ...]` and `[PHOTO: ...]` boxes: client video testimonials and CJ/Bill photos. (Press logos are done; white PNGs are in `landing-page/images/logos/`.)
+- Client Transformations videos are live Voomly embeds (same video IDs as Sophie's current page), so they play once the page is published. Press logos are done; white PNGs are in `landing-page/images/logos/`.
 - The tracking pixel slot in `<head>`.
 - Footer disclaimer text: to be replaced with the footer copy from Sophie's current landing page.
 - Written releases for CJ and Bill must be on file before the page runs.

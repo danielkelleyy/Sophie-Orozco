@@ -158,20 +158,7 @@
   }
   .proof::before{ left:3%; top:-30px; }
   .proof::after{ right:3%; bottom:-190px; }
-  .proof-note{ text-align:center; font-family:var(--font-sub); font-style:italic; font-size:19px; color:var(--green-mid); margin-bottom:30px; position:relative; }
-  .t-card{
-    position:relative; max-width:760px; margin:0 auto 28px; background:var(--romance);
-    border-radius:var(--radius); padding:30px 36px 28px 96px;
-    box-shadow:0 22px 44px -30px rgba(21,71,52,.5);
-  }
-  .t-card .ph.avatar{
-    position:absolute; left:-34px; top:40px; width:96px; height:96px; border-radius:50%; padding:8px; font-size:10px;
-  }
-  .t-card h3{ font-family:var(--font-sub); font-style:italic; font-size:30px; line-height:1.15; margin-bottom:12px; }
-  .t-card p{ font-size:17px; }
-  .t-card b{ color:var(--green); }
-  .t-name{ margin-top:14px; font-family:var(--font-heading); font-weight:700; font-size:14px; color:var(--pink); }
-  .t-name small{ font-weight:500; color:#8a8e93; }
+  .proof-note{ text-align:center; font-family:var(--font-sub); font-style:italic; font-size:19px; color:var(--green-mid); margin-bottom:36px; position:relative; }
 
   /* ================= METHOD ================= */
   .method{ padding:80px 0 40px; }
@@ -236,10 +223,6 @@
     .reg-form input{ flex:none; width:100%; }
     .reg-form input + input{ border-left:none; border-top:1px solid #eadfd6; }
     .reg-form .btn{ width:100%; }
-    .t-card{ padding:84px 22px 24px; margin-bottom:64px; }
-    .t-card .ph.avatar{ left:50%; top:-30px; transform:translateX(-50%); }
-    .t-card h3{ font-size:26px; }
-    .proof{ padding-top:84px; }
     .proof::before,.proof::after{ font-size:200px; }
     .reach-item{ font-size:28px; }
     .d1{ top:0; left:40%; width:60%; }
@@ -250,10 +233,18 @@
 
   .logo-row{ margin-top:20px; display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:22px 44px; }
   .logo-img{ width:auto; max-width:100%; display:block; }
-  .proof-h{ text-align:center; font-family:var(--font-title); font-size:clamp(34px,4.5vw,46px); margin:56px 0 26px; position:relative; }
+  .proof-h{ text-align:center; font-family:var(--font-title); font-size:clamp(36px,4.8vw,50px); margin:0 0 8px; position:relative; }
   .v-grid{ position:relative; display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:860px; margin:0 auto; }
   .v-tile{ margin:0; }
-  .v-tile .ph{ aspect-ratio:9/16; border-radius:14px; background:var(--romance); }
+  .vid{ width:100%; border-radius:14px; overflow:hidden; background:linear-gradient(45deg, #cdd9c3 0%, #eef3e6 100%); box-shadow:0 22px 44px -30px rgba(21,71,52,.55); }
+  .vid[data-ratio="1.777778"]{ aspect-ratio:16/9; }
+  .vid[data-ratio="0.562500"]{ aspect-ratio:9/16; }
+  .v-wide{ position:relative; max-width:820px; margin:0 auto 44px; }
+  .v-wide figcaption{ margin-top:14px; text-align:center; }
+  .v-wide figcaption b{ display:block; font-family:var(--font-heading); font-size:18px; color:var(--green); }
+  .v-wide .loc{ display:block; font-size:14px; color:#7b7f84; }
+  .v-wide p{ margin:10px auto 0; max-width:700px; font-size:16px; }
+
   .v-tile figcaption{ margin-top:8px; text-align:center; font-size:14px; color:#7b7f84; }
   .v-tile figcaption b{ display:block; color:var(--green); font-family:var(--font-heading); font-size:14px; }
   @media (max-width:560px){ .logo-row{ gap:18px 28px; } .logo-row .logo-img{ transform:scale(.8); } }
@@ -315,34 +306,30 @@
     </div>
   </section>
 
-  <!-- ================= TESTIMONIALS ================= -->
+  <!-- ================= CLIENT TRANSFORMATIONS ================= -->
+  <!-- Videos are live Voomly embeds (same IDs as Sophie's current page); they play once the page is published. -->
+  <script src="https://embed.voomly.com/embed/embed-build.js"></script>
   <section class="proof">
     <div class="container">
+      <h2 class="proof-h">Client Transformations</h2>
       <p class="proof-note">Every marriage is different. These are their stories, in their own words.</p>
 
-      <article class="t-card">
-        <div class="ph avatar">[PHOTO: CJ]</div>
-        <h3>"It flipped like 180."</h3>
-        <p>"He had this energy that was <b>detached from me, but still warm.</b> I knew he was still wanting our marriage to work out. But I could tell that he shifted into this more, like, <b>confident energy, the security.</b>"</p>
-        <div class="t-name">CJ <small>&nbsp;had filed for divorce. Her husband did the work on his own.</small></div>
-      </article>
+      <figure class="v-wide">
+        <div class="voomly-embed vid" data-id="lEAaiFpLzstboyAMxkglycKjFt2QCyDyBi1V2Jw3Mz7uUERzT" data-ratio="1.777778" data-type="v" data-skin-color="#154734" data-shadow=""></div>
+        <figcaption><b>Bill</b><span class="loc">Massachusetts</span><p>When Bill came to us, his wife had moved out and divorce felt inevitable. Instead of trying to convince her or control the outcome, he learned how to become more steady, grounded, and emotionally clear. That shift changed the dynamic and created space for real repair.</p></figcaption>
+      </figure>
+      <figure class="v-wide">
+        <div class="voomly-embed vid" data-id="iZu9TLabzSZLZmwBNy0QqksBDCV-TDSZL2fR2AcEQzVPZnCFb" data-ratio="1.777778" data-type="v" data-skin-color="#154734" data-shadow=""></div>
+        <figcaption><b>Samantha</b><span class="loc">United Kingdom</span><p>After her husband said he wanted a divorce and years of disconnection had worn her down, she felt like she had run out of options. Therapy had not changed the dynamic, and the distance only seemed to grow. Instead of chasing reassurance or trying to fix him, she began confronting the patterns that shaped how she showed up under pressure. Through the Relationship Miracle Method, she became steady in a way that shifted the tone of the relationship and created space for real reconnection.</p></figcaption>
+      </figure>
 
-      <article class="t-card">
-        <div class="ph avatar">[PHOTO: Bill]</div>
-        <h3>"This time I did it for me."</h3>
-        <p>"This time I did it for me, <b>to be the best version of me</b>, and that's what shifted everything else into place. <b>I'm going to be okay no matter what</b> because I'm going to be a better me for me, not for her."</p>
-        <div class="t-name">Bill <small>&nbsp;his wife had moved out</small></div>
-      </article>
-
-      <h2 class="proof-h">Client Transformations</h2>
-      <!-- Swap each .ph for your Wistia/YouTube embed or a thumbnail linking to the video -->
       <div class="v-grid">
-        <figure class="v-tile"><div class="ph">[VIDEO: Bill testimonial, 9:16]</div><figcaption><b>Bill</b> Massachusetts</figcaption></figure>
-        <figure class="v-tile"><div class="ph">[VIDEO: Samantha testimonial, 9:16]</div><figcaption><b>Samantha</b> United Kingdom</figcaption></figure>
-        <figure class="v-tile"><div class="ph">[VIDEO: Jay testimonial, 9:16]</div><figcaption><b>Jay</b> Utah</figcaption></figure>
-        <figure class="v-tile"><div class="ph">[VIDEO: Gemma testimonial, 9:16]</div><figcaption><b>Gemma</b> United Kingdom</figcaption></figure>
-        <figure class="v-tile"><div class="ph">[VIDEO: Joanna testimonial, 9:16]</div><figcaption><b>Joanna</b> Washington</figcaption></figure>
-        <figure class="v-tile"><div class="ph">[VIDEO: Ashley testimonial, 9:16]</div><figcaption><b>Ashley</b> New York</figcaption></figure>
+        <figure class="v-tile"><div class="voomly-embed vid" data-id="k84VHN8n3ZekwFxNJUIkiMbNWwjAHqcgR8oJLXpTaortVyBtb" data-ratio="0.562500" data-type="v" data-skin-color="#154734" data-shadow=""></div><figcaption><b>Gemma</b> UK</figcaption></figure>
+        <figure class="v-tile"><div class="voomly-embed vid" data-id="FRM1DsYTglbHgFRG2KNq794fAg6JFDi4xtG5jNoPO03VV9jDB" data-ratio="0.562500" data-type="v" data-skin-color="#154734" data-shadow=""></div><figcaption><b>Joanna</b> Washington</figcaption></figure>
+        <figure class="v-tile"><div class="voomly-embed vid" data-id="Wi_DGggCH5rdzhYrr7SUmclSV1p1SBM59QE_Dr8gf-CrX0kZS" data-ratio="0.562500" data-type="v" data-skin-color="#154734" data-shadow=""></div><figcaption><b>Ashley</b> New York</figcaption></figure>
+        <figure class="v-tile"><div class="voomly-embed vid" data-id="skh_pkSZ2Q5bMlMIOGMUkUx3PgfxcAikQVKaGV0kWeZSZzIcA" data-ratio="0.562500" data-type="v" data-skin-color="#154734" data-shadow=""></div><figcaption><b>Amy</b> Iowa</figcaption></figure>
+        <figure class="v-tile"><div class="voomly-embed vid" data-id="rs0LQweVBCimGl6-bBE56T0TERJzIByzK0cdZ-JROeQqGxxe3" data-ratio="0.562500" data-type="v" data-skin-color="#154734" data-shadow=""></div><figcaption><b>Samantha</b> United Kingdom</figcaption></figure>
+        <figure class="v-tile"><div class="voomly-embed vid" data-id="28wdXjVb5GPO3hhagVY2tNXZGUa0GGIQznp5UUIBOvKiP3kpa" data-ratio="0.562500" data-type="v" data-skin-color="#154734" data-shadow=""></div><figcaption><b>Julie</b> Florida</figcaption></figure>
       </div>
     </div>
   </section>
