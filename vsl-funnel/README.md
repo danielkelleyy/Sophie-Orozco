@@ -34,5 +34,5 @@ Each page is one self-contained file: styles, photos and logos are all inside it
 - **Calendar:** paste the GHL / Calendly / OnceHub embed into `book-call.html`. Set the confirmation redirect to the confirmation page.
 - **Confirmation page:** pre-call video, meet-the-team video, pull quotes for Bill and Samantha, screenshot wall, one more FAQ. Client videos are the live Voomly embeds from the masterclass.
 - **Opt-in page:** rating badge placeholder in the hero behind the popup.
-- **Everywhere:** support email in the footer, tracking pixels in `<head>`, logo if you want it instead of the text wordmark.
+- **Everywhere:** tracking pixels in `<head>`, logo if you want it instead of the text wordmark.
 - Written releases must be on file for every client shown, and screenshots need names and faces redacted.
