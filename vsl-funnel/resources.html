@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  SOPHIE OROZCO VSL FUNNEL: RESOURCES PAGE (application not a fit)
+  Send people here from the Typeform application when their answers don't qualify them for a call
+  (set this up with Typeform's logic jumps / redirect on completion, or route on the GHL side).
+  The page never says "disqualified". It thanks them and points them to Sophie's free YouTube videos.
+  Videos come from the YouTube Library tab of "Sophie - Source - Resource Library" in Drive.
+  Each video loads only when clicked (thumbnail first), so the page stays fast.
+  To swap a video: change the data-id and the i.ytimg.com thumbnail ID (both are the YouTube video ID), plus the title.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Here | Sophie Orozco</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Cormorant+Infant:ital,wght@1,400;1,500;1,600&family=Livvic:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<!-- ================= TRACKING PIXELS: paste Meta Pixel / Google Ads / GTM here ================= -->
+<style>
+/* ===== Shared funnel styles (same on every page) ===== */
+/* =====================================================================
+   SOPHIE OROZCO — VSL FUNNEL SHARED STYLES
+   Same palette, fonts and components as landing-page/landing.html
+   (Moxie Made brand guide). Layout modeled on the Josh Hudson funnel.
+   This block is repeated in every page so each file works on its own. If you change it, change it on all 5 pages.
+   ===================================================================== */
+:root{
+  --peach:#FCF6EF;       /* Seashell Peach, light background */
+  --romance:#FEFDFB;     /* Romance, cards */
+  --green:#154734;       /* Sherwood Green, dark sections */
+  --green-deep:#0F3526;
+  --green-mid:#44693D;   /* Chalet Green */
+  --beryl:#D0DEBB;       /* Beryl Green */
+  --pink:#D6938A;        /* My Pink, accent + buttons */
+  --pink-dark:#C47D73;
+  --zinn:#E1B7A7;        /* Zinnwaldite */
+  --abbey:#4B4F54;       /* Abbey, body text */
+  --sand:#EFE2D8;
+  --pink-soft:rgba(214,147,138,.28);
+  --beryl-soft:#EDF3E3;
+
+  --font-title:'Cormorant Garamond', Georgia, serif;
+  --font-heading:'Montserrat', Arial, sans-serif;
+  --font-sub:'Cormorant Infant', Georgia, serif;
+  --font-body:'Livvic', Arial, sans-serif;
+
+  --radius:18px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{ margin:0; overflow-x:hidden; }
+/* Styled on our own wrapper (GHL sets its own body styles) */
+.so-root{
+  width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+  background:var(--peach) !important; color:var(--abbey) !important;
+  font-family:var(--font-body); font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  border-top:4px solid var(--pink);
+}
+.so-root img{ max-width:100%; display:block; }
+.container{ width:100%; max-width:1080px; margin:0 auto; padding:0 24px; }
+.narrow{ max-width:820px; }
+h1,h2,h3,h4{ margin:0; color:var(--green); font-weight:500; }
+p{ margin:0; }
+.center{ text-align:center; }
+
+/* ---------- Sections ---------- */
+.sec{ padding:72px 0; }
+.sec-dark{ background:var(--green); color:#E9EFE6; }
+.sec-dark h1,.sec-dark h2,.sec-dark h3{ color:#fff; }
+.sec-light{ background:var(--peach); }
+.sec-white{ background:var(--romance); }
+.sec-sand{ background:var(--sand); }
+
+/* ---------- Type ---------- */
+.kicker{   /* italic script line above headings, like "In This Training" */
+  font-family:var(--font-sub); font-style:italic; font-weight:500;
+  font-size:clamp(24px,3vw,30px); color:var(--pink); line-height:1.1;
+}
+.sec-dark .kicker{ color:var(--zinn); }
+.h-xl{ font-family:var(--font-title); font-weight:600; font-size:clamp(40px,6vw,72px); line-height:1.02; letter-spacing:-.005em; }
+.h-lg{ font-family:var(--font-title); font-weight:600; font-size:clamp(36px,5vw,56px); line-height:1.04; }
+.h-md{ font-family:var(--font-title); font-weight:600; font-size:clamp(28px,3.6vw,38px); line-height:1.1; }
+.h-xl em,.h-lg em,.h-md em{ font-style:italic; color:var(--pink); }
+.sec-dark .h-xl em,.sec-dark .h-lg em{ color:var(--zinn); }
+.lead{ font-size:18px; max-width:620px; margin:18px auto 0; }
+.sec-dark .lead{ color:#D9E3D5; }
+
+.pill{    /* small label, like "FREE TRAINING WITH..." */
+  display:inline-block; font-family:var(--font-heading); font-weight:700; font-size:11.5px;
+  letter-spacing:.18em; text-transform:uppercase; color:#fff; background:var(--pink);
+  padding:7px 14px; border-radius:4px;
+}
+.pill-outline{ background:transparent; color:var(--pink); border:1.5px solid var(--pink); }
+.eyebrow{ font-family:var(--font-heading); font-size:12.5px; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:var(--green-mid); }
+.sec-dark .eyebrow{ color:var(--beryl); }
+.hl{ background:linear-gradient(transparent 12%, var(--pink-soft) 12%, var(--pink-soft) 92%, transparent 92%); padding:0 3px; }
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  font-family:var(--font-heading); font-weight:700; font-size:14px;
+  letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
+  padding:17px 36px; border-radius:999px; border:none; cursor:pointer;
+  background:var(--pink); color:#fff;
+  transition:transform .15s ease, background .15s ease;
+  box-shadow:0 14px 28px -14px rgba(214,147,138,.95);
+}
+.btn:hover{ background:var(--pink-dark); transform:translateY(-1px); }
+.btn .arr{ font-size:18px; line-height:1; }
+.btn-block{ width:100%; }
+.btn-stack{ flex-direction:column; gap:4px; padding:16px 40px 15px; border-radius:16px; }
+.btn-stack small{ font-family:var(--font-body); font-weight:400; font-size:14px; letter-spacing:0; text-transform:none; opacity:.95; }
+.btn-big{ font-size:clamp(16px,2.2vw,20px); }
+.cta-row{ margin-top:34px; text-align:center; }
+
+/* ---------- Placeholders: replace each .ph with real content ---------- */
+.ph{
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; text-align:center;
+  background:var(--beryl-soft); border:2px dashed var(--green-mid); color:var(--green-mid);
+  font-family:var(--font-heading); font-size:12px; font-weight:600; letter-spacing:.04em;
+  padding:18px; border-radius:12px;
+}
+.ph small{ font-family:var(--font-body); font-weight:400; font-size:12px; letter-spacing:0; opacity:.85; }
+.sec-dark .ph{ background:rgba(255,255,255,.06); border-color:var(--beryl); color:var(--beryl); }
+.ph-inline{ display:inline-flex; padding:6px 12px; border-radius:999px; font-size:11px; }
+.todo{ background:#FFF4C2; color:#6b5800; padding:0 4px; border-radius:3px; font-weight:600; }
+
+/* ---------- Brand ---------- */
+.brand{ font-family:var(--font-title); font-size:24px; font-weight:600; color:var(--green); letter-spacing:.02em; text-decoration:none; }
+.sec-dark .brand,.topbar .brand{ color:#fff; }
+
+/* ---------- Check lists ---------- */
+.checks{ list-style:none; margin:0; padding:0; }
+.checks li{ position:relative; padding:14px 0 14px 38px; border-bottom:1px solid rgba(255,255,255,.12); }
+.checks li:last-child{ border-bottom:none; }
+.checks li::before{
+  content:""; position:absolute; left:0; top:17px; width:22px; height:22px; border-radius:6px;
+  background:var(--pink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/15px no-repeat;
+}
+.checks b{ color:#fff; font-weight:700; }
+.sec-light .checks li,.sec-white .checks li{ border-color:#eadfd6; }
+.sec-light .checks b,.sec-white .checks b{ color:var(--green); }
+
+/* ---------- Logos (white PNGs; darkened on light backgrounds) ---------- */
+.featured{ text-align:center; }
+.featured-label{ display:flex; align-items:center; gap:18px; justify-content:center; font-family:var(--font-heading); font-size:13px; font-weight:600; letter-spacing:.3em; color:var(--beryl); }
+.featured-label::before,.featured-label::after{ content:""; height:1px; width:min(160px,18vw); background:currentColor; opacity:.4; }
+.logo-row{ margin-top:22px; display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:22px 44px; }
+.logo-row img{ width:auto; opacity:.92; }
+.on-light .featured-label{ color:#8a8f94; }
+.on-light .logo-row img{ filter:brightness(0); opacity:.42; }
+
+/* ---------- Video frame ---------- */
+.video-frame{ position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden; background:#0b2a1e; box-shadow:0 30px 60px -30px rgba(0,0,0,.6); }
+.video-frame .ph{ position:absolute; inset:0; border-radius:14px; }
+
+/* ---------- Footer ---------- */
+.footer{ background:#23272a; color:#a9adb2; padding:44px 0 36px; font-size:12px; line-height:1.7; text-align:center; }
+.footer p{ max-width:820px; margin:0 auto 14px; }
+.footer .contact{ font-family:var(--font-heading); font-size:12.5px; letter-spacing:.08em; color:#e7e2dc; padding-bottom:14px; border-bottom:1px solid #444a4f; display:inline-block; margin-bottom:14px; }
+.footer .copy{ margin-top:22px; font-family:var(--font-heading); font-weight:700; letter-spacing:.2em; color:#e7e2dc; }
+.footer a{ color:#d9d4ce; }
+
+/* ---------- Top bar (application / booking / confirmation) ---------- */
+.topbar{ background:var(--green); color:#fff; text-align:center; padding:30px 0 28px; }
+.topbar h1{ font-family:var(--font-title); font-weight:600; font-size:clamp(32px,4.6vw,48px); line-height:1.05; color:#fff; }
+.topbar p{ margin-top:6px; font-family:var(--font-sub); font-style:italic; font-size:22px; color:var(--zinn); }
+
+/* ---------- Progress steps ---------- */
+.steps{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:18px auto 0; font-family:var(--font-heading); font-size:11.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; }
+.steps span{ display:inline-flex; align-items:center; gap:8px; color:rgba(255,255,255,.55); }
+.steps span + span::before{ content:""; width:22px; height:1px; background:rgba(255,255,255,.35); margin-right:2px; }
+.steps i{ font-style:normal; display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; border:1.5px solid currentColor; font-size:11px; }
+.steps .done{ color:var(--beryl); }
+.steps .done i{ background:var(--beryl); border-color:var(--beryl); color:var(--green); }
+.steps .now{ color:#fff; }
+.steps .now i{ background:var(--pink); border-color:var(--pink); }
+
+/* ---------- Card ---------- */
+.card{ background:var(--romance); border:1px solid #efe3d8; border-radius:var(--radius); box-shadow:0 30px 60px -40px rgba(21,71,52,.45); }
+
+@media (max-width:560px){
+  .so-root{ font-size:16px; }
+  .sec{ padding:56px 0; }
+  .btn{ padding:16px 26px; font-size:13px; }
+  .btn-stack{ padding:15px 20px 14px; }
+  .logo-row{ gap:16px 26px; }
+  .logo-row img{ transform:scale(.82); }
+  .steps span + span::before{ width:10px; }
+}
+</style>
+<style>
+  .res-hero{ background:radial-gradient(120% 90% at 50% 0%, #1d5a42 0%, var(--green) 55%, var(--green-deep) 100%); color:#fff; padding:22px 0 56px; text-align:center; }
+  .res-hero .brand{ display:block; text-align:left; color:#fff; font-size:22px; }
+  .res-hero .kicker{ margin-top:34px; color:var(--zinn); }
+  .res-hero h1{ margin-top:4px; font-family:var(--font-title); font-weight:600; font-size:clamp(44px,7vw,76px); line-height:1; color:#fff; }
+  .res-hero .lead{ max-width:640px; color:#D9E3D5; }
+  .res-hero .lead + .lead{ margin-top:12px; }
+  .start{ padding:56px 0 20px; }
+  .start-wrap{ max-width:860px; margin:0 auto; text-align:center; }
+  .start-wrap .pill{ margin-bottom:14px; }
+  .start-wrap h2{ font-family:var(--font-title); font-weight:600; font-size:clamp(30px,4vw,42px); line-height:1.1; }
+  .start-wrap .yt-sub{ margin:8px auto 22px; }
+  .library{ padding:24px 0 72px; }
+  .yt-group{ max-width:1040px; margin:48px auto 0; }
+  .yt-group h2{ font-family:var(--font-title); font-weight:600; font-size:clamp(28px,3.4vw,36px); line-height:1.1; text-align:center; }
+  .yt-sub{ max-width:600px; margin:8px auto 0; text-align:center; font-size:16px; color:#6b6f74; }
+  .yt-grid{ margin-top:24px; display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .yt-grid-2{ grid-template-columns:repeat(2,1fr); max-width:760px; margin-left:auto; margin-right:auto; }
+  .yt{ margin:0; }
+  .yt-thumb{ position:relative; display:block; width:100%; aspect-ratio:16/9; padding:0; border:none; border-radius:12px; overflow:hidden; cursor:pointer; background:#0b2a1e; box-shadow:0 20px 40px -28px rgba(21,71,52,.6); }
+  .yt-thumb img{ width:100%; height:100%; object-fit:cover; transition:transform .25s ease; }
+  .yt-thumb:hover img{ transform:scale(1.03); }
+  .yt-play{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:58px; height:58px; border-radius:50%; background:rgba(214,147,138,.95); color:#fff; display:grid; place-items:center; box-shadow:0 10px 24px -8px rgba(0,0,0,.5); }
+  .yt-play svg{ width:26px; height:26px; margin-left:3px; }
+  .yt-big .yt-play{ width:76px; height:76px; }
+  .yt-big .yt-play svg{ width:34px; height:34px; }
+  .yt-time{ position:absolute; right:8px; bottom:8px; padding:2px 7px; border-radius:4px; background:rgba(0,0,0,.72); color:#fff; font-family:var(--font-heading); font-size:11.5px; font-weight:600; }
+  .yt iframe{ display:block; width:100%; aspect-ratio:16/9; border:0; border-radius:12px; background:#000; }
+  .yt figcaption{ margin-top:10px; font-family:var(--font-heading); font-size:14.5px; font-weight:600; line-height:1.4; color:var(--green); }
+  .yt-big figcaption{ text-align:center; font-size:16px; }
+  .channel{ padding:60px 0 64px; text-align:center; }
+  .channel .lead{ margin-top:12px; }
+  .channel .btn{ margin-top:26px; }
+  @media (max-width:860px){ .yt-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .yt-grid,.yt-grid-2{ grid-template-columns:1fr; } .yt-group{ margin-top:40px; } }
+</style>
+</head>
+<body>
+<div class="so-root">
+
+  <!-- ================= HERO ================= -->
+  <section class="res-hero">
+    <div class="container">
+      <a class="brand" href="#" aria-label="Sophie Orozco"><!-- Swap for logo: <img src="LOGO_URL" alt="Sophie Orozco" height="40"> -->Sophie Orozco</a>
+      <p class="kicker">Thank you for sharing your story</p>
+      <h1>Start Here</h1>
+      <p class="lead">Based on your answers, our coaching program isn't the right fit for where you are right now. That doesn't mean you're on your own.</p>
+      <p class="lead">Sophie has shared much of what she teaches on her YouTube channel, for free. These are the videos we'd point you to first.</p>
+    </div>
+  </section>
+
+  <!-- ================= START HERE VIDEO ================= -->
+  <section class="start sec-white">
+    <div class="container">
+      <div class="start-wrap">
+        <span class="pill">Watch this first</span>
+        <h2>It Only Takes One Person to Start</h2>
+        <p class="yt-sub">Why your spouse doesn't have to be on board for things to begin to shift, and where to put your focus first.</p>
+        <figure class="yt yt-big">
+          <button class="yt-thumb" type="button" data-id="I5qbJvEq7MU" aria-label="Play: You Can Save Your Marriage Even If Your Spouse IS OUT (Here's How)">
+            <img src="https://i.ytimg.com/vi/I5qbJvEq7MU/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="yt-time">6:53</span>
+          </button>
+          <figcaption>You Can Save Your Marriage Even If Your Spouse IS OUT (Here's How)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VIDEO LIBRARY ================= -->
+  <div class="library sec-white">
+    <div class="container">
+    <section class="yt-group">
+      <h2>If your spouse has pulled away</h2>
+      <p class="yt-sub">Why chasing and explaining tend to widen the gap, and what to focus on instead.</p>
+      <div class="yt-grid">
+        <figure class="yt">
+          <button class="yt-thumb" type="button" data-id="nLmx8voE4GA" aria-label="Play: If Your Partner Isn't In Love Anymore, Watch This">
+            <img src="https://i.ytimg.com/vi/nLmx8voE4GA/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="yt-time">6:17</span>
+          </button>
+          <figcaption>If Your Partner Isn't In Love Anymore, Watch This</figcaption>
+        </figure>
+        <figure class="yt">
+          <button class="yt-thumb" type="button" data-id="CNPZCoVv3qk" aria-label="Play: How To Reconnect With Your Husband/Wife">
+            <img src="https://i.ytimg.com/vi/CNPZCoVv3qk/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="yt-time">4:50</span>
+          </button>
+          <figcaption>How To Reconnect With Your Husband/Wife</figcaption>
+        </figure>
+        <figure class="yt">
+          <button class="yt-thumb" type="button" data-id="q-ELCjTgdbE" aria-label="Play: How To Rebuild Connection With Your Spouse">
+            <img src="https://i.ytimg.com/vi/q-ELCjTgdbE/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="yt-time">8:10</span>
+          </button>
+          <figcaption>How To Rebuild Connection With Your Spouse</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="yt-group">
+      <h2>If you're separated, or thinking about it</h2>
+      <p class="yt-sub">How to stay steady while you're apart, and what to ask yourself before anyone moves out.</p>
+      <div class="yt-grid">
+        <figure class="yt">
+          <button class="yt-thumb" type="button" data-id="rctLcyv7dco" aria-label="Play: Watch This Before You Separate From Your Spouse (It's Not What You Think)">
+            <img src="https://i.ytimg.com/vi/rctLcyv7dco/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="yt-time">4:53</span>
+          </button>
+          <figcaption>Watch This Before You Separate From Your Spouse (It's Not What You Think)</figcaption>
+        </figure>
+        <figure class="yt">
+          <button class="yt-thumb" type="button" data-id="aWTO_VRBe5w" aria-label="Play: How To Save Your Marriage During Separation">
+            <img src="https://i.ytimg.com/vi/aWTO_VRBe5w/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="yt-time">6:36</span>
+          </button>
+          <figcaption>How To Save Your Marriage During Separation</figcaption>
+        </figure>
+        <figure class="yt">
+          <button class="yt-thumb" type="button" data-id="eVxxX_8WsV8" aria-label="Play: Here Are 3 Things You Should Do To Save Your Marriage During Separation">
+            <img src="https://i.ytimg.com/vi/eVxxX_8WsV8/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="yt-time">6:15</span>
+          </button>
+          <figcaption>Here Are 3 Things You Should Do To Save Your Marriage During Separation</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="yt-group">
+      <h2>If the same fight keeps coming back</h2>
+      <p class="yt-sub">Small habits that wear a marriage down, and how to change your side of the pattern.</p>
+      <div class="yt-grid">
+        <figure class="yt">
+          <button class="yt-thumb" type="button" data-id="mREtZlqdEao" aria-label="Play: How to Break the Cycle of Fighting in Your Relationship">
+            <img src="https://i.ytimg.com/vi/mREtZlqdEao/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="yt-time">7:55</span>
+          </button>
+          <figcaption>How to Break the Cycle of Fighting in Your Relationship</figcaption>
+        </figure>
+        <figure class="yt">
+          <button class="yt-thumb" type="button" data-id="dAcbCApkGRY" aria-label="Play: STOP Doing These 5 Things That Ruin Your Marriage">
+            <img src="https://i.ytimg.com/vi/dAcbCApkGRY/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="yt-time">8:23</span>
+          </button>
+          <figcaption>STOP Doing These 5 Things That Ruin Your Marriage</figcaption>
+        </figure>
+        <figure class="yt">
+          <button class="yt-thumb" type="button" data-id="zl7_1rmm-c4" aria-label="Play: Stop Expecting Change From Your Partner!">
+            <img src="https://i.ytimg.com/vi/zl7_1rmm-c4/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="yt-time">6:18</span>
+          </button>
+          <figcaption>Stop Expecting Change From Your Partner!</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="yt-group">
+      <h2>Hear it from people who've been there</h2>
+      <p class="yt-sub">Two of Sophie's clients share their stories in their own words.</p>
+      <div class="yt-grid yt-grid-2">
+        <figure class="yt">
+          <button class="yt-thumb" type="button" data-id="m4cc7wCUeo0" aria-label="Play: His Wife Moved Out and Wanted a Divorce... How He Turned His Marriage Around">
+            <img src="https://i.ytimg.com/vi/m4cc7wCUeo0/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="yt-time">38:35</span>
+          </button>
+          <figcaption>His Wife Moved Out and Wanted a Divorce... How He Turned His Marriage Around</figcaption>
+        </figure>
+        <figure class="yt">
+          <button class="yt-thumb" type="button" data-id="tcof2vD52YA" aria-label="Play: Her Husband Asked For A Divorce During Her Vacation: What Happened Next Changed Their Marriage">
+            <img src="https://i.ytimg.com/vi/tcof2vD52YA/hqdefault.jpg" alt="" loading="lazy">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="yt-time">37:44</span>
+          </button>
+          <figcaption>Her Husband Asked For A Divorce During Her Vacation: What Happened Next Changed Their Marriage</figcaption>
+        </figure>
+      </div>
+    </section>
+    </div>
+  </div>
+
+  <!-- ================= CHANNEL ================= -->
+  <section class="channel sec-sand">
+    <div class="container">
+      <p class="kicker">There's more where these came from</p>
+      <h2 class="h-lg">Watch on YouTube</h2>
+      <p class="lead">Subscribe so the next video finds you.</p>
+      <a class="btn" href="https://youtube.com/@sophieorozcocoaching" target="_blank" rel="noopener">Visit Sophie's channel <span class="arr">&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="contact">CONTACT US: <a href="mailto:hello@sophieorozco.com">HELLO@SOPHIEOROZCO.COM</a></div>
+      <p><a href="https://go.sophieorozco.com/privacy-policy">Privacy Policy</a> &nbsp;|&nbsp; <a href="https://go.sophieorozco.com/terms-of-service">Terms of Service</a></p>
+      <p>Sophie Orozco Coaching does not promise or guarantee any specific outcome for your marriage. Every relationship is different, and results depend on many factors, including your own commitment and circumstances.</p>
+      <p>This program is not designed for situations involving abuse or coercion. If you do not feel safe at home, please contact a local support service.</p>
+      <p>This site is not a part of the Facebook website or Meta Platforms, Inc. Additionally, this site is not endorsed by Facebook in any way. Facebook is a trademark of Meta Platforms, Inc.</p>
+      <p class="copy">SOPHIE OROZCO &copy; 2026</p>
+    </div>
+  </footer>
+
+</div>
+<script>
+(function(){
+  document.querySelectorAll('.yt-thumb').forEach(function(b){
+    b.addEventListener('click', function(){
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?autoplay=1&rel=0';
+      f.title=b.getAttribute('aria-label').replace('Play: ','');
+      f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      f.allowFullscreen=true;
+      b.replaceWith(f);
+    });
+  });
+})();
+</script>
+</body>
+</html>

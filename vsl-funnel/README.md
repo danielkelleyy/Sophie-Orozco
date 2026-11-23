@@ -10,8 +10,10 @@ built with Sophie's brand palette, fonts and components from the masterclass pag
 | 3 | Application (Typeform) | `application.html` | Application Page |
 | 4 | Call booking | `book-call.html` | none in his folder, so it continues the application page layout |
 | 5 | Confirmation | `confirmation.html` | callbookedconfirmationpage.png |
+| — | Resources (application not a fit) | `resources.html` | none; Sophie's YouTube videos with a "Start Here" pick |
 
 Flow: opt-in popup → video → "Book your call" → application (Typeform) → booking calendar → confirmation.
+Applicants who don't qualify go from the Typeform to `resources.html` instead of the booking calendar.
 
 ## Editing and publishing
 
@@ -30,7 +32,7 @@ Each page is one self-contained file: styles, photos and logos are all inside it
 - **Page links:** buttons link to `video.html`, `application.html`, etc. Swap these for your GHL funnel step URLs.
 - **Opt-in form:** replace `OPTIN_FORM_ACTION_URL` (or the whole `<form class="optin-form">`) with the GHL form. Set its redirect to the video page.
 - **VSL:** paste the player embed into the `.video-frame` on `video.html` and delete the placeholder "Your training is playing" overlay if the player has its own.
-- **Typeform (`hqoLrF3O`):** in Typeform, set "Redirect on completion" to the booking page URL. UTMs on the application page URL pass through to Typeform.
+- **Typeform (`hqoLrF3O`):** in Typeform, set "Redirect on completion" to the booking page URL, and use logic so applicants who don't qualify are redirected to the resources page instead. UTMs on the application page URL pass through to Typeform.
 - **Calendar:** paste the GHL / Calendly / OnceHub embed into `book-call.html`. Set the confirmation redirect to the confirmation page.
 - **Confirmation page:** pre-call video, meet-the-team video, pull quotes for Bill and Samantha, screenshot wall, one more FAQ. Client videos are the live Voomly embeds from the masterclass.
 - **Opt-in page:** rating badge placeholder in the hero behind the popup.
