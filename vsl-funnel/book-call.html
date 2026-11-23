@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  SOPHIE OROZCO VSL FUNNEL, PAGE 4 of 5: CALL BOOKING
+  Josh Hudson's folder has no screenshot of his booking step (his application button reads
+  "Step 2: Schedule a call"), so this page continues the application page's layout.
+  Paste the calendar embed (GHL calendar / Calendly / OnceHub) where marked.
+  Set the calendar's confirmation redirect to the confirmation page URL.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pick a Time for Your Call | Sophie Orozco Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Cormorant+Infant:ital,wght@1,400;1,500;1,600&family=Livvic:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<!-- ================= TRACKING PIXELS: paste Meta Pixel / Google Ads / GTM here (fire SubmitApplication here) ================= -->
+<link rel="stylesheet" href="funnel.css">
+<style>
+  .book{ background:#EFE7DE; padding:0 0 64px; }
+  .book .card{ max-width:900px; margin:0 auto; position:relative; top:-1px; border-radius:0 0 var(--radius) var(--radius); padding:34px 34px 30px; }
+  .book-intro{ text-align:center; }
+  .book-intro h2{ font-family:var(--font-heading); font-size:17px; font-weight:700; }
+  .book-intro p{ margin:10px auto 0; max-width:560px; font-size:15.5px; }
+  .cal{ margin-top:24px; min-height:640px; }
+  .notes{ margin-top:22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .note{ background:var(--peach); border:1px solid #efe3d8; border-radius:12px; padding:16px 16px 14px; font-size:14px; line-height:1.5; }
+  .note b{ display:block; font-family:var(--font-heading); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--green); margin-bottom:4px; }
+  .quote-sec{ text-align:center; }
+  .quote{ max-width:760px; margin:0 auto; font-family:var(--font-title); font-style:italic; font-weight:500; font-size:clamp(26px,3.4vw,36px); line-height:1.25; color:var(--green); }
+  .quote-by{ margin-top:16px; font-family:var(--font-heading); font-size:12.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--green-mid); }
+  .quote-vid{ max-width:720px; margin:34px auto 0; }
+  @media (max-width:700px){ .notes{ grid-template-columns:1fr; } .book .card{ padding:26px 16px 22px; } }
+</style>
+</head>
+<body>
+<div class="so-root">
+
+  <!-- ================= HEADER ================= -->
+  <header class="topbar">
+    <div class="container">
+      <h1>Your Application Is In</h1>
+      <p>One last step: pick a time for your call</p>
+      <div class="steps" aria-label="Progress">
+        <span class="done"><i>&#10003;</i>Apply</span>
+        <span class="now"><i>2</i>Pick a time</span>
+        <span><i>3</i>Confirmed</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= CALENDAR ================= -->
+  <section class="book">
+    <div class="container">
+      <div class="card">
+        <div class="book-intro">
+          <h2>Choose a time that works for you</h2>
+          <p>Your call is free, private and done by phone or Zoom. Please pick a time when you can talk openly, away from your spouse if needed.</p>
+        </div>
+
+        <!-- CALENDAR EMBED GOES HERE. Replace this .ph with the GHL calendar / Calendly / OnceHub embed code. -->
+        <div class="ph cal">[CALENDAR EMBED: booking calendar]<small>GHL calendar, Calendly or OnceHub. Round-robin to closers. Redirect to the confirmation page after booking.</small></div>
+
+        <div class="notes">
+          <div class="note"><b>Be somewhere private</b>Choose a time and place where you can speak freely.</div>
+          <div class="note"><b>No driving</b>We won't take the call if you're driving or distracted, so please book a time when you can focus.</div>
+          <div class="note"><b>Keep the time</b>Your spot is held just for you. If something changes, reschedule from your confirmation email.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REASSURANCE ================= -->
+  <section class="sec sec-white quote-sec">
+    <div class="container">
+      <p class="kicker">Before you go</p>
+      <p class="quote" style="margin-top:10px;">&ldquo;<span class="todo">[CLIENT QUOTE: one or two sentences about how the first call felt, e.g. that it was the first time someone understood their situation]</span>&rdquo;</p>
+      <p class="quote-by"><span class="todo">[CLIENT FIRST NAME, LOCATION]</span></p>
+      <div class="quote-vid video-frame"><div class="ph">[OPTIONAL VIDEO: short client clip or Sophie selfie video]<small>16:9. Delete this box if not used.</small></div></div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="contact">CONTACT US: <span class="todo">[SUPPORT EMAIL]</span></div>
+      <p><a href="https://go.sophieorozco.com/privacy-policy">Privacy Policy</a> &nbsp;|&nbsp; <a href="https://go.sophieorozco.com/terms-of-service">Terms of Service</a></p>
+      <p>Sophie Orozco Coaching does not promise or guarantee any specific outcome for your marriage. Every relationship is different, and results depend on many factors, including your own commitment and circumstances.</p>
+      <p>This program is not designed for situations involving abuse or coercion. If you do not feel safe at home, please contact a local support service.</p>
+      <p>This site is not a part of the Facebook website or Meta Platforms, Inc. Additionally, this site is not endorsed by Facebook in any way. Facebook is a trademark of Meta Platforms, Inc.</p>
+      <p class="copy">SOPHIE OROZCO &copy; 2026</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
