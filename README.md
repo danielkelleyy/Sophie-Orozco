@@ -27,14 +27,14 @@ Search the file for these and replace them:
 
 | Step | File | What it is |
 |---|---|---|
-| 1 | `landing.html` | A headline about the client's marriage transformation, their case-study video (Voomly), a "Ready to turn your marriage around?" section, **Book a Call With My Team** buttons, the Featured In logos and a wall of client message screenshots |
+| 1 | `landing.html` | A "Client Testimonial" eyebrow, a headline about the client's marriage transformation, their case-study video (Voomly), a **Book a Call With My Team** button, the Featured In logos and a wall of client message screenshots with a second button |
 | 2 | `booking.html` | The Calendly booking widget (Relationship Reset Call), what happens on the call, and a quote from the client |
 | 3 | `confirmation.html` | "You're booked", next steps, a note from Sophie and the client's video again |
 
 Publish each page in GoHighLevel the same way as the masterclass page: one Custom Code element per funnel step.
 
 ### Before they go live
-- **Link the steps.** On each landing page, swap `booking.html` (3 buttons, marked `BOOKING_PAGE_URL`) for that funnel's GHL booking step URL. On each booking page, set `CONFIRMATION_PAGE_URL` in the script near the bottom to that funnel's confirmation step URL.
+- **Link the steps.** On each landing page, swap `booking.html` (2 buttons, marked `BOOKING_PAGE_URL`) for that funnel's GHL booking step URL. On each booking page, set `CONFIRMATION_PAGE_URL` in the script near the bottom to that funnel's confirmation step URL.
 - **Calendly redirect.** The booking page sends people to the confirmation page itself once they book, so each funnel gets its own thank-you page. If the Calendly event type has its own "redirect after booking" setting turned on, turn it off. Bookings are tagged `utm_campaign=bill`, `samantha` or `jay`, so you can see in Calendly which funnel each one came from.
 - **Tracking pixels.** Use the slot in each `<head>`. Fire the Schedule conversion on the confirmation pages.
 - **Headline options.** The comment at the top of each landing page lists alternative headlines.
