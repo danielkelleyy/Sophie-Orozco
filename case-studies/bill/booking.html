@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  SOPHIE OROZCO — CASE STUDY FUNNEL: BILL (page 2 of 3: call booking)
+  Paste into a GHL page's Custom Code (HTML) element with the default header/footer/theme off.
+
+  QUICK-SWAP:
+    1) CONFIRMATION_PAGE_URL (in the script near the bottom) — where visitors go after booking.
+       This redirect happens on the page, so no Calendly setting needs to change. If the Calendly event
+       type already has its own "redirect after booking" set, that one can win; turn it off in Calendly.
+    2) TRACKING PIXELS — paste in the marked slot below.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Your Relationship Reset Call | Sophie Orozco</title>
+<meta name="description" content="Pick a time for your free Relationship Reset Call with Sophie Orozco's team.">
+<meta name="robots" content="noindex">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cormorant+Infant:ital,wght@1,400;1,500&family=Livvic:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<!-- ================= TRACKING PIXELS: paste Meta Pixel / Google Ads / GTM here ================= -->
+<!-- ================================================================================================ -->
+
+<style>
+  :root{
+    /* Sophie Orozco brand palette (same tokens as landing-page/landing.html) */
+    --peach:#FCF6EF; --romance:#FEFDFB; --green:#154734; --green-mid:#44693D;
+    --beryl:#D0DEBB; --pink:#D6938A; --zinn:#E1B7A7; --abbey:#4B4F54;
+    --pink-soft:rgba(214,147,138,.28); --beryl-soft:#EDF3E3; --blush:#EFE2D8;
+    --font-title:'Cormorant Garamond', Georgia, serif;
+    --font-heading:'Montserrat', Arial, sans-serif;
+    --font-sub:'Cormorant Infant', Georgia, serif;
+    --font-body:'Livvic', Arial, sans-serif;
+    --radius:18px;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; overflow-x:hidden; }
+  /* Styled on our own wrapper, not body: GHL sets its own body background,
+     and the 100vw breakout escapes any GHL row/column padding. */
+  .so-root{
+    width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+    background:var(--peach) !important; color:var(--abbey) !important;
+    font-family:var(--font-body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .so-root img{ max-width:100%; display:block; }
+  .container{ width:100%; max-width:1120px; margin:0 auto; padding:0 24px; }
+  .narrow{ max-width:880px; }
+  h1,h2,h3{ margin:0; color:var(--green); font-weight:500; }
+  p{ margin:0; }
+  .hl{ background:linear-gradient(transparent 12%, var(--pink-soft) 12%, var(--pink-soft) 92%, transparent 92%); padding:0 3px; }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; text-align:center;
+    font-family:var(--font-heading); font-weight:700; font-size:15px;
+    letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
+    padding:19px 40px; border-radius:999px; border:none; cursor:pointer;
+    background:var(--pink); color:#fff !important;
+    transition:transform .15s ease, background .15s ease;
+    box-shadow:0 12px 24px -12px rgba(214,147,138,.9);
+  }
+  .btn:hover{ background:#c97f75; transform:translateY(-1px); }
+  .btn .arr{ margin-left:10px; font-size:18px; line-height:1; }
+  .btn-note{ margin-top:12px; font-size:13px; color:#7b7f84; }
+
+  .topbar{ padding:22px 0 0; text-align:center; }
+  .brand{ font-family:var(--font-title); font-size:24px; font-weight:600; color:var(--green); letter-spacing:.02em; text-decoration:none; }
+  .eyebrow{
+    display:inline-block; font-family:var(--font-heading); font-size:12px; font-weight:700; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--green-mid); background:var(--beryl-soft);
+    border:1px solid var(--beryl); border-radius:999px; padding:7px 16px;
+  }
+
+  .vid-wrap{ position:relative; max-width:860px; margin:0 auto; }
+  .vid{ width:100%; aspect-ratio:16/9; border-radius:16px; overflow:hidden;
+        background:linear-gradient(45deg, #cdd9c3 0%, #eef3e6 100%);
+        box-shadow:0 34px 70px -36px rgba(21,71,52,.65); }
+
+  .reach{ background:var(--green); padding:26px 0 30px; text-align:center; }
+  .reach-label{ font-family:var(--font-heading); font-size:13px; letter-spacing:.24em; font-weight:600; color:var(--beryl); }
+  .logo-row{ margin-top:20px; display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:22px 44px; }
+  .logo-img{ width:auto; max-width:100%; display:block; }
+
+  .footer{ background:#23272a; color:#a9adb2; padding:44px 0 36px; font-size:12px; line-height:1.7; text-align:center; }
+  .footer p{ max-width:820px; margin:0 auto 14px; }
+  .footer .copy{ margin-top:22px; font-family:var(--font-heading); font-weight:700; letter-spacing:.2em; color:#e7e2dc; }
+  .footer a{ color:#d9d4ce; }
+
+  @media (max-width:560px){
+    .so-root{ font-size:16px; }
+    .btn{ width:100%; padding:18px 22px; font-size:14px; }
+    .logo-row{ gap:18px 28px; } .logo-row .logo-img{ transform:scale(.8); }
+  }
+
+  .book-hero{ padding:22px 0 26px; text-align:center; }
+  .progress{ margin:26px auto 0; max-width:420px; }
+  .progress-bar{ height:8px; border-radius:99px; background:#eadfd6; overflow:hidden; }
+  .progress-bar span{ display:block; height:100%; width:66%; background:var(--green); border-radius:99px; }
+  .progress-label{ margin-top:8px; font-family:var(--font-heading); font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--green-mid); }
+  .book-hero h1{ margin:22px auto 0; max-width:820px; font-family:var(--font-title); font-size:clamp(36px,5vw,58px); line-height:1.04; }
+  .book-sub{ margin:16px auto 0; max-width:640px; font-size:18px; }
+
+  .book-grid{ display:grid; grid-template-columns:1.55fr 1fr; gap:32px; align-items:start; padding:20px 0 72px; }
+  .cal{ background:var(--romance); border-radius:var(--radius); box-shadow:0 30px 60px -38px rgba(21,71,52,.6); overflow:hidden; border:1px solid #efe3d8; }
+  .calendly-inline-widget{ min-width:300px; height:1000px; }
+  .side{ display:grid; gap:20px; position:sticky; top:20px; }
+  .card{ background:var(--romance); border:1px solid #efe3d8; border-radius:var(--radius); padding:26px 26px 28px; }
+  .card h2{ font-family:var(--font-title); font-size:28px; line-height:1.1; }
+  .steps{ list-style:none; padding:0; margin:16px 0 0; display:grid; gap:14px; counter-reset:s; }
+  .steps li{ position:relative; padding-left:44px; font-size:15.5px; line-height:1.5; counter-increment:s; }
+  .steps li::before{ content:counter(s); position:absolute; left:0; top:0; width:30px; height:30px; border-radius:50%;
+    background:var(--green); color:#fff; font-family:var(--font-heading); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center; }
+  .steps b{ color:var(--green); }
+  .quote-card{ background:var(--green); color:var(--peach); border:none; }
+  .quote-card p{ font-family:var(--font-title); font-size:24px; line-height:1.25; color:#fff; }
+  .quote-card p::before{ content:"\201C"; display:block; font-size:64px; line-height:.5; color:var(--pink); margin:10px 0 8px; }
+  .quote-card cite{ display:block; margin-top:14px; font-family:var(--font-heading); font-style:normal; font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--zinn); }
+  .reassure{ font-size:14px; color:#6b6f74; text-align:center; }
+
+  @media (max-width:900px){
+    .book-grid{ grid-template-columns:1fr; }
+    .side{ position:static; }
+    .calendly-inline-widget{ height:1060px; }
+  }
+  @media (max-width:560px){ .book-sub{ font-size:16.5px; } .container.book-grid{ padding-left:12px; padding-right:12px; } }
+</style>
+</head>
+<body>
+<div class="so-root">
+
+  <header class="topbar"><span class="brand">Sophie Orozco</span></header>
+
+  <section class="book-hero">
+    <div class="container">
+      <div class="progress"><div class="progress-bar"><span></span></div><div class="progress-label">Almost done: pick your time</div></div>
+      <h1>Book your Relationship Reset Call</h1>
+      <p class="book-sub">Choose a time that works for you. You'll talk with someone on Sophie's team about where your marriage is right now and what your first steps could be.</p>
+    </div>
+  </section>
+
+  <div class="container book-grid">
+    <div class="cal">
+      <!-- Calendly inline embed. UTM tags record which case-study funnel the booking came from. -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/d/dz2p-yn7-93d/the-relationship-reset-call?hide_gdpr_banner=1&background_color=fefdfb&text_color=4b4f54&primary_color=154734&utm_source=case-study&utm_medium=funnel&utm_campaign=bill"></div>
+      <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    </div>
+
+    <aside class="side">
+      <div class="card">
+        <h2>What happens on the call</h2>
+        <ol class="steps">
+          <li><b>We listen.</b> Tell us what's happening in your marriage, in your own words. Nothing you say is too messy.</li>
+          <li><b>We get clear.</b> We'll look at the pattern keeping you stuck and what's actually in your control.</li>
+          <li><b>You leave with next steps.</b> If Relationship Revive is a fit, we'll show you how it works. If it isn't, we'll tell you.</li>
+        </ol>
+      </div>
+      <div class="card quote-card">
+        <p>If you put in all the effort for yourself, you cannot lose.</p>
+        <cite>Bill, Massachusetts</cite>
+      </div>
+      <p class="reassure">It's free and confidential, and it's okay if you get emotional. Most people do.</p>
+    </aside>
+  </div>
+
+  <script>
+    /* When a call is booked inside the Calendly widget, send the visitor to this funnel's confirmation page.
+       CONFIRMATION_PAGE_URL: swap for this funnel's GHL confirmation step URL. */
+    var CONFIRMATION_PAGE_URL = 'confirmation.html';
+    window.addEventListener('message', function (e) {
+      if (e.origin === 'https://calendly.com' && e.data && e.data.event === 'calendly.event_scheduled') {
+        window.location.href = CONFIRMATION_PAGE_URL;
+      }
+    });
+  </script>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Sophie Orozco Coaching does not promise or guarantee any specific outcome for your marriage. Every relationship is different, and results depend on many factors, including your own commitment and circumstances. The stories shared on this page are real. They show what the work looked like for those individuals and are not a representation of typical results.</p>
+      <p>This program is not designed for situations involving abuse or coercion. If you do not feel safe at home, please contact a local support service.</p>
+      <p>This site is not a part of the Facebook website or Meta Platforms, Inc. Additionally, this site is not endorsed by Facebook in any way. Facebook is a trademark of Meta Platforms, Inc.</p>
+      <p class="copy">SOPHIE OROZCO &copy; 2026</p>
+      <p><a href="https://go.sophieorozco.com/privacy-policy">Privacy Policy</a> &nbsp;|&nbsp; <a href="https://go.sophieorozco.com/terms-of-service">Terms of Service</a></p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
