@@ -13,16 +13,17 @@ built with Sophie's brand palette, fonts and components from the masterclass pag
 
 Flow: opt-in popup → video → "Book your call" → application (Typeform) → booking calendar → confirmation.
 
-## Editing
+## Editing and publishing
 
-- Edit the files in this folder. They share `funnel.css` and load photos from `landing-page/images/`, so you can open them straight in a browser to preview.
+Each page is one self-contained file: styles, photos and logos are all inside it, with nothing else to upload.
+
+1. In FG Funnels / GoHighLevel, create one funnel step per page and remove the default header, footer and theme.
+2. Add a Custom Code / HTML element covering the full page.
+3. Open the matching `.html` file on GitHub, click **Raw**, copy everything and paste it in. Publish.
+
 - Every placeholder is a dashed green box (`class="ph"`) or yellow highlighted text (`class="todo"`). Search for `ph"`, `todo` and `[` to find them all.
+- The shared styles block near the top of each file is identical on all 5 pages. If you change a color or font there, change it on every page.
 - Copy follows the intake voice and claims rules: no dashes, contractions, no outcome claims, no unverified numbers.
-
-## Publishing in GoHighLevel
-
-1. Run `python3 vsl-funnel/build.py`. It writes self-contained copies to `vsl-funnel/ghl-ready/` with the CSS and images inlined.
-2. In GHL, create one funnel step per page, remove the default header, footer and theme, add a Custom Code / HTML element, and paste the matching `ghl-ready` file.
 
 ## Before it goes live
 
