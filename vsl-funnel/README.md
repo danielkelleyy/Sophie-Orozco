@@ -29,7 +29,7 @@ Each page is one self-contained file: styles, photos and logos are all inside it
 
 ## Before it goes live
 
-- **Page links:** buttons link to `video.html`, `application.html`, etc. Swap these for your GHL funnel step URLs.
+- **Page links:** the video page buttons go to https://connect.sophieorozco.com/application. Page-to-page redirects (opt-in form, Typeform, calendar) are set in each tool and must use full live URLs.
 - **Opt-in form:** the popup embeds the GHL "VSL Opt In Form" (EXxhHVRXIuKQ2UW8toA9) inline. Its redirect to the video page and its styling are set in GHL; the "Form Submitted" workflow starts the post opt-in emails.
 - **VSL:** paste the player embed into the `.video-frame` on `video.html` and delete the placeholder "Your training is playing" overlay if the player has its own.
 - **Typeform (`hqoLrF3O`):** in Typeform, set "Redirect on completion" to the booking page URL, and use logic so applicants who don't qualify are redirected to the resources page instead. UTMs on the application page URL pass through to Typeform.
