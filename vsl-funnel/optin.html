@@ -4,7 +4,8 @@
 <!--
   SOPHIE OROZCO VSL FUNNEL, PAGE 1 of 5: OPT-IN
   Modeled on the Josh Hudson opt-in page (Competitors/Josh Hudson/Opt-In Page.png + Opt-In Form.png).
-  Every CTA opens the opt-in popup. The popup form posts to OPTIN_FORM_ACTION_URL, then sends people to the video page.
+  Locked opt-in: the popup is always open over the hero and can't be closed or scrolled past.
+  The only way forward is submitting the form, which posts to OPTIN_FORM_ACTION_URL and sends people to the video page.
   Placeholders: search for "ph" boxes, [BRACKETS] and OPTIN_FORM_ACTION_URL. See vsl-funnel/README.md.
 -->
 <meta charset="UTF-8">
@@ -17,48 +18,20 @@
 <!-- ================= TRACKING PIXELS: paste Meta Pixel / Google Ads / GTM here ================= -->
 <link rel="stylesheet" href="funnel.css">
 <style>
-  /* ---------- HERO ---------- */
-  .hero{ padding:28px 0 64px; text-align:center; background:radial-gradient(120% 80% at 50% 0%, #1d5a42 0%, var(--green) 55%, var(--green-deep) 100%); }
+  /* ---------- LOCKED PAGE: no scrolling, popup always on top ---------- */
+  html,body{ height:100%; overflow:hidden !important; }
+  .so-root{ height:100vh; overflow:hidden; }
+  /* ---------- HERO (backdrop behind the popup) ---------- */
+  .hero{ min-height:100vh; padding:28px 0 64px; text-align:center; background:radial-gradient(120% 80% at 50% 0%, #1d5a42 0%, var(--green) 55%, var(--green-deep) 100%); }
   .hero .brand{ display:inline-block; margin-bottom:18px; }
   .rating{ display:inline-flex; align-items:center; gap:10px; margin-bottom:22px; }
   .hero h1{ max-width:900px; margin:18px auto 0; }
   .hero .lead{ max-width:560px; }
-  /* ---------- DISCOVER ---------- */
-  .discover-grid{ margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center; text-align:left; }
-  .discover-photo{ aspect-ratio:4/3; border-radius:var(--radius); }
-  .discover .checks li{ font-size:16px; color:#D9E3D5; }
-  .discover .featured{ margin-top:56px; }
-  /* ---------- FOR YOU ---------- */
-  .fit-grid{ margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:24px; text-align:left; }
-  .fit{ padding:30px 30px 26px; border-radius:var(--radius); }
-  .fit h3{ font-family:var(--font-heading); font-size:17px; font-weight:700; margin-bottom:10px; }
-  .fit ul{ list-style:none; margin:0; padding:0; }
-  .fit li{ position:relative; padding:10px 0 10px 32px; font-size:15.5px; line-height:1.5; }
-  .fit li::before{ position:absolute; left:0; top:11px; width:20px; height:20px; border-radius:50%; display:grid; place-items:center; font-size:12px; font-weight:700; font-family:var(--font-heading); }
-  .fit-yes{ background:var(--romance); border:2px solid var(--green); box-shadow:0 26px 50px -36px rgba(21,71,52,.6); }
-  .fit-yes li::before{ content:"\2713"; background:var(--pink); color:#fff; }
-  .fit-no{ background:#F1EAE2; border:2px solid transparent; }
-  .fit-no h3 span{ color:var(--pink-dark); }
-  .fit-no li{ color:#6f7377; }
-  .fit-no li::before{ content:"\2715"; background:#d8d0c7; color:#fff; }
-  /* ---------- SUCCESS STORIES ---------- */
-  .wins{ margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:22px; }
-  .wins .ph{ aspect-ratio:4/3; }
-  .wins .ph.tall{ aspect-ratio:3/4; }
-  .disclaimer{ margin:30px auto 0; max-width:720px; font-size:12px; line-height:1.6; color:#9FB3A6; text-align:center; }
-  /* ---------- ABOUT ---------- */
-  .about-grid{ display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; align-items:center; }
-  .about-img{ width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; object-position:57% 30%; border-radius:200px 200px var(--radius) var(--radius); box-shadow:0 30px 60px -34px rgba(21,71,52,.6); }
-  .about h2{ margin-top:6px; }
-  .about-copy p{ margin-top:16px; }
-  .about-copy .btn{ margin-top:28px; }
   /* ---------- OPT-IN POPUP ---------- */
-  .modal{ position:fixed; inset:0; z-index:9999; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(8,26,19,.78); backdrop-filter:blur(2px); }
-  .modal.open{ display:flex; }
+  .modal{ position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px; background:rgba(8,26,19,.78); backdrop-filter:blur(2px); }
   .modal-box{ position:relative; width:100%; max-width:560px; max-height:calc(100vh - 40px); overflow:auto; background:var(--romance); border-radius:14px; border-top:5px solid var(--pink); text-align:center; box-shadow:0 40px 80px -30px rgba(0,0,0,.6); animation:pop .22s ease; }
   @keyframes pop{ from{ transform:translateY(12px); opacity:0; } to{ transform:none; opacity:1; } }
   .modal-body{ padding:38px 40px 26px; }
-  .modal-close{ position:absolute; top:12px; right:14px; width:36px; height:36px; border:none; background:none; font-size:30px; line-height:1; color:#8a8f94; cursor:pointer; }
   .modal .kicker{ margin-top:22px; }
   .modal h2{ font-family:var(--font-title); font-weight:600; font-size:clamp(34px,6vw,46px); line-height:1; margin-top:2px; }
   .modal-sub{ margin:12px auto 0; max-width:400px; font-size:16.5px; }
@@ -70,20 +43,14 @@
   .optin-form .btn{ margin-top:6px; padding:19px 20px; border-radius:10px; font-size:15px; }
   .secure{ margin-top:14px; display:flex; align-items:center; justify-content:center; gap:8px; font-size:13.5px; color:#8a8f94; }
   .secure svg{ width:14px; height:14px; }
+  .legal{ margin-top:8px; font-size:12px; color:#9aa0a5; }
+  .legal a{ color:#8a8f94; }
   .modal-gift{ background:#F4EEE7; padding:18px 28px; font-size:15px; line-height:1.5; border-radius:0 0 14px 14px; }
   .modal-gift b{ color:var(--green); }
   .modal-gift svg{ width:17px; height:17px; vertical-align:-3px; color:var(--pink); margin-right:6px; }
 
-  @media (max-width:860px){
-    .discover-grid,.about-grid,.fit-grid{ grid-template-columns:1fr; }
-    .discover-photo{ max-width:520px; margin:0 auto; width:100%; }
-    .about-grid{ gap:32px; text-align:center; }
-    .about-img{ max-width:360px; margin:0 auto; }
-  }
   @media (max-width:560px){
-    .wins{ grid-template-columns:1fr; }
     .modal-body{ padding:34px 22px 22px; }
-    .fit{ padding:24px 20px 20px; }
   }
 </style>
 </head>
@@ -102,124 +69,14 @@
       <span class="pill">Free training with Sophie Orozco reveals&hellip;</span>
       <h1 class="h-xl">The 3 <em>Shifts</em> That Can Help You Turn Your Marriage Around</h1>
       <p class="lead">Without your spouse needing to be on board, going back to counseling, or having one more conversation about the problems.</p>
-      <div class="cta-row"><button class="btn open-optin" type="button">Get the free training <span class="arr">&rarr;</span></button></div>
+      <div class="cta-row"><button class="btn" type="button" tabindex="-1" aria-hidden="true">Get the free training <span class="arr">&rarr;</span></button></div>
     </div>
   </section>
-
-  <!-- ================= YOU WILL DISCOVER ================= -->
-  <section class="sec sec-dark discover" style="padding-top:20px;">
-    <div class="container center">
-      <p class="kicker">In this training</p>
-      <h2 class="h-lg">You Will Discover:</h2>
-
-      <div class="discover-grid">
-        <div class="ph discover-photo">[PHOTO: Sophie teaching / still frame from the training video]<small>Landscape, about 4:3</small></div>
-        <ul class="checks">
-          <li><b>Why talking it out again</b> can push your spouse further away, and what to focus on instead.</li>
-          <li><b>Why chasing, gestures and trying harder</b> can backfire once they've already pulled away.</li>
-          <li><b>Why it only takes one willing person</b> to change the entire dynamic of a marriage.</li>
-          <li><b>How to start changing the dynamic</b> without needing your spouse to agree to work on the marriage first.</li>
-          <li><b>The three shifts of the True Self Method</b> Sophie teaches to help rebuild trust and connection.</li>
-        </ul>
-      </div>
-
-      <div class="cta-row"><button class="btn open-optin" type="button">Get the free training <span class="arr">&rarr;</span></button></div>
-
-      <div class="featured">
-        <div class="featured-label">AS FEATURED IN</div>
-        <div class="logo-row">
-          <img src="../landing-page/images/logos/authority.png" alt="Authority Magazine" style="height:42px">
-          <img src="../landing-page/images/logos/the-knot.png" alt="The Knot" style="height:30px">
-          <img src="../landing-page/images/logos/verywell.png" alt="Verywell Mind" style="height:26px">
-          <img src="../landing-page/images/logos/aol.png" alt="AOL" style="height:28px">
-          <img src="../landing-page/images/logos/charleston-women.png" alt="Charleston Women" style="height:36px">
-          <img src="../landing-page/images/logos/medium.png" alt="Medium" style="height:24px">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= IS THIS FOR YOU ================= -->
-  <section class="sec sec-light">
-    <div class="container center" style="max-width:940px;">
-      <p class="kicker">Is this training</p>
-      <h2 class="h-lg">For You?</h2>
-      <div class="fit-grid">
-        <div class="fit fit-yes">
-          <h3>This is for you if:</h3>
-          <ul>
-            <li>Your spouse has checked out, moved out or said they're done, and you're the one still fighting.</li>
-            <li>You've tried talking, counseling or giving more, and they still feel further away.</li>
-            <li>They won't go to therapy, or they say there's nothing left to work on.</li>
-            <li>You want to understand what you can change, even if they aren't ready to take part.</li>
-          </ul>
-        </div>
-        <div class="fit fit-no">
-          <h3>This is <span>NOT</span> for you if:</h3>
-          <ul>
-            <li>You're looking for a way to pressure or convince your spouse to stay.</li>
-            <li>You want them to change without changing anything in you.</li>
-            <li>You expect one conversation to fix everything.</li>
-            <li>There's abuse or coercion in your home. Please reach out to a local support service first.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SUCCESS STORIES ================= -->
-  <!-- Josh uses screenshots of client wins (FB group posts, texts). Swap each .ph for an <img>. Redact names/faces per the intake redaction policy and have releases on file. -->
-  <section class="sec sec-dark">
-    <div class="container narrow center">
-      <span class="pill">Success stories</span>
-      <div class="wins">
-        <div class="ph">[SCREENSHOT: client win #1]<small>Community post or DM, names redacted</small></div>
-        <div class="ph">[SCREENSHOT: client win #2]<small>Community post or DM, names redacted</small></div>
-        <div class="ph">[SCREENSHOT: client win #3]<small>Text / message screenshot</small></div>
-        <div class="ph">[SCREENSHOT: client win #4]<small>Text / message screenshot</small></div>
-        <div class="ph tall">[SCREENSHOT: client win #5]<small>Post with photo, faces blurred</small></div>
-        <div class="ph tall">[SCREENSHOT: client win #6]<small>Post with photo, faces blurred</small></div>
-      </div>
-      <p class="disclaimer">These stories are shared by individual clients and reflect their own experience. They are not typical results and are not a promise of any specific outcome for your marriage. Every relationship is different, and results depend on many factors, including your own commitment and circumstances.</p>
-      <div class="cta-row"><button class="btn open-optin" type="button">Get the free training <span class="arr">&rarr;</span></button></div>
-    </div>
-  </section>
-
-  <!-- ================= ABOUT SOPHIE ================= -->
-  <section class="sec sec-white about">
-    <div class="container about-grid">
-      <div>
-        <img class="about-img" src="../landing-page/images/sophie-hero.jpg" alt="Sophie Orozco" width="800" height="1200">
-      </div>
-      <div class="about-copy">
-        <span class="pill">About Sophie Orozco</span>
-        <p class="kicker" style="margin-top:18px;">Why did I make</p>
-        <h2 class="h-lg">This Free Training?</h2>
-        <p>Chris and I went from a summer romance to four babies in about five years. Somewhere along the way, we became roommates. Then, the week after my sister died, he told me he wanted a divorce.</p>
-        <p>I tried everything. Counseling he wouldn't go to. Every book. Even my own therapist said there was nothing I could do. So I stopped chasing, and I started with me. It changed everything.</p>
-        <p>That became the True Self Method. I made this training so you don't have to figure it out alone at 2am the way I did. It walks you through the three shifts I now teach men and women in every kind of marriage crisis, and what you can start changing in your own marriage today.</p>
-        <button class="btn open-optin" type="button">Get the free training <span class="arr">&rarr;</span></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer">
-    <div class="container">
-      <div class="contact">CONTACT US: <span class="todo">[SUPPORT EMAIL]</span></div>
-      <p><a href="https://go.sophieorozco.com/privacy-policy">Privacy Policy</a> &nbsp;|&nbsp; <a href="https://go.sophieorozco.com/terms-of-service">Terms of Service</a></p>
-      <p>Sophie Orozco Coaching does not promise or guarantee any specific outcome for your marriage. Every relationship is different, and results depend on many factors, including your own commitment and circumstances. The stories shared on this page are real. They show what the work looked like for those individuals and are not a representation of typical results.</p>
-      <p>This program is not designed for situations involving abuse or coercion. If you do not feel safe at home, please contact a local support service.</p>
-      <p>This site is not a part of the Facebook website or Meta Platforms, Inc. Additionally, this site is not endorsed by Facebook in any way. Facebook is a trademark of Meta Platforms, Inc.</p>
-      <p class="copy">SOPHIE OROZCO &copy; 2026</p>
-    </div>
-  </footer>
 
   <!-- ================= OPT-IN POPUP ================= -->
-  <!-- Replace this <form> with your GHL form embed if preferred. Set the GHL form's redirect to the video page. -->
-  <div class="modal" id="optin" role="dialog" aria-modal="true" aria-labelledby="optin-title">
+  <!-- Always open, no close button. Replace this <form> with your GHL form embed if preferred. Set the GHL form's redirect to the video page. -->
+  <div class="modal open" id="optin" role="dialog" aria-modal="true" aria-labelledby="optin-title">
     <div class="modal-box">
-      <button class="modal-close" type="button" aria-label="Close">&times;</button>
       <div class="modal-body">
         <span class="pill">Free training</span>
         <p class="kicker">You're one step away</p>
@@ -241,6 +98,7 @@
           <button class="btn btn-block" type="submit">Watch the free training <span class="arr">&rarr;</span></button>
         </form>
         <div class="secure"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1zm2 0h6V7a3 3 0 0 0-6 0z"/></svg>Your information is 100% secure</div>
+        <p class="legal"><a href="https://go.sophieorozco.com/privacy-policy">Privacy Policy</a> &nbsp;|&nbsp; <a href="https://go.sophieorozco.com/terms-of-service">Terms of Service</a></p>
       </div>
       <div class="modal-gift">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v9H5v-9M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
@@ -253,14 +111,10 @@
 <script>
 (function(){
   var modal = document.getElementById('optin');
-  function open(){ modal.classList.add('open'); document.body.style.overflow='hidden'; var f=modal.querySelector('input'); if(f) setTimeout(function(){ f.focus(); }, 60); }
-  function close(){ modal.classList.remove('open'); document.body.style.overflow=''; }
-  document.querySelectorAll('.open-optin').forEach(function(b){ b.addEventListener('click', open); });
-  modal.querySelector('.modal-close').addEventListener('click', close);
-  modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
-  // Preview helper: until OPTIN_FORM_ACTION_URL is replaced, submitting just goes to the video page.
   var form = modal.querySelector('form');
+  var first = form.querySelector('input');
+  if(first && window.innerWidth > 700) first.focus();
+  // Preview helper: until OPTIN_FORM_ACTION_URL is replaced, submitting just goes to the video page.
   form.addEventListener('submit', function(e){
     if(form.getAttribute('action').indexOf('OPTIN_FORM_ACTION_URL') === 0){ e.preventDefault(); window.location.href = form.dataset.next; }
   });

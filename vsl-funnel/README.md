@@ -5,7 +5,7 @@ built with Sophie's brand palette, fonts and components from the masterclass pag
 
 | # | Page | File | Josh reference |
 |---|------|------|----------------|
-| 1 | Opt-in (with popup form) | `optin.html` | Opt-In Page.png, Opt-In Form.png |
+| 1 | Opt-in (locked popup form over the hero, no scrolling) | `optin.html` | Opt-In Page.png, Opt-In Form.png |
 | 2 | Video (VSL) | `video.html` | video-page.png |
 | 3 | Application (Typeform) | `application.html` | Application Page |
 | 4 | Call booking | `book-call.html` | none in his folder, so it continues the application page layout |
@@ -32,6 +32,6 @@ Flow: opt-in popup → video → "Book your call" → application (Typeform) →
 - **Typeform (`hqoLrF3O`):** in Typeform, set "Redirect on completion" to the booking page URL. UTMs on the application page URL pass through to Typeform.
 - **Calendar:** paste the GHL / Calendly / OnceHub embed into `book-call.html`. Set the confirmation redirect to the confirmation page.
 - **Confirmation page:** pre-call video, meet-the-team video, pull quotes for Bill and Samantha, screenshot wall, one more FAQ. Client videos are the live Voomly embeds from the masterclass.
-- **Opt-in page:** rating badge, training still photo, six client-win screenshots.
+- **Opt-in page:** rating badge placeholder in the hero behind the popup.
 - **Everywhere:** support email in the footer, tracking pixels in `<head>`, logo if you want it instead of the text wordmark.
 - Written releases must be on file for every client shown, and screenshots need names and faces redacted.
