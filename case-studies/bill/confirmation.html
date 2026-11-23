@@ -6,12 +6,19 @@
   Paste into a GHL page's Custom Code (HTML) element with the default header/footer/theme off.
 
   QUICK-SWAP:
-    1) TRACKING PIXELS — paste in the marked slot below. Fire your "Schedule" conversion event here.
+    1) CONFIRMATION_VIDEO_VOOMLY_ID — the Voomly ID of Sophie's confirmation video (same video on all 3 funnels).
+    2) TRACKING PIXELS — paste in the marked slot below. Fire your "Schedule" conversion event here.
+
+  Headline options (live one is in the <h1>):
+     - IMPORTANT: Watch This Short Video Before Your Call (LIVE)
+     - IMPORTANT: Watch This Before Your Relationship Reset Call
+     - IMPORTANT: Watch This Now So You Get the Most Out of Your Call
+     - IMPORTANT: Watch This Before We Talk (It Will Change How You Show Up to Your Call)
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>You're Booked | Sophie Orozco</title>
-<meta name="description" content="Your Relationship Reset Call is booked.">
+<meta name="description" content="Your Relationship Reset Call is booked. Watch this short video before your call.">
 <meta name="robots" content="noindex">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,28 +99,17 @@
     .logo-row{ gap:18px 28px; } .logo-row .logo-img{ transform:scale(.8); }
   }
 
-  .done{ padding:22px 0 60px; text-align:center; }
-  .check{ width:84px; height:84px; margin:34px auto 0; border-radius:50%; background:var(--green); display:flex; align-items:center; justify-content:center;
-          box-shadow:0 0 0 10px var(--beryl-soft), 0 20px 40px -18px rgba(21,71,52,.7); }
-  .done h1{ margin:28px auto 0; max-width:800px; font-family:var(--font-title); font-size:clamp(40px,5.6vw,64px); line-height:1.02; }
-  .done-sub{ margin:16px auto 0; max-width:620px; font-size:18px; }
-  .next{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin:44px auto 0; max-width:1000px; text-align:left; }
+  .done{ padding:22px 0 72px; text-align:center; }
+  .eyebrow-ok{ margin-top:26px; display:inline-flex; align-items:center; gap:7px; }
+  .done h1{ margin:20px auto 34px; max-width:940px; font-family:var(--font-title); font-size:clamp(36px,5.2vw,62px); line-height:1.04; }
+  .done h1 em{ font-style:italic; color:var(--pink); white-space:nowrap; }
+  .imp{ display:block; margin-bottom:10px; font-family:var(--font-heading); font-size:clamp(15px,1.6vw,18px); font-weight:700; letter-spacing:.22em; color:#b4473b; }
+  .next{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin:56px auto 0; max-width:1000px; text-align:left; }
   .next .item{ background:var(--romance); border:1px solid #efe3d8; border-radius:var(--radius); padding:26px; }
   .next .num{ font-family:var(--font-heading); font-size:12px; font-weight:700; letter-spacing:.18em; color:var(--pink); }
   .next h3{ margin-top:8px; font-family:var(--font-title); font-size:26px; line-height:1.1; }
   .next p{ margin-top:8px; font-size:15.5px; }
-
-  .note{ background:var(--romance); padding:64px 0 70px; }
-  .letter{ max-width:720px; margin:0 auto; background:var(--peach); border:1px solid #efe3d8; border-radius:var(--radius); padding:40px 44px; font-size:17px; line-height:1.7; }
-  .letter p + p{ margin-top:14px; }
-  .letter-open{ font-family:var(--font-sub); font-style:italic; font-size:26px; color:var(--green); }
-  .letter-sign{ margin-top:4px !important; font-family:var(--font-sub); font-style:italic; font-size:40px; line-height:1; color:var(--pink); }
-
-  .rewatch{ background:var(--blush); padding:64px 0 76px; text-align:center; }
-  .rewatch h2{ font-family:var(--font-title); font-size:clamp(32px,4.4vw,46px); line-height:1.08; margin-bottom:28px; }
-
-  @media (max-width:900px){ .next{ grid-template-columns:1fr; max-width:560px; } }
-  @media (max-width:560px){ .letter{ padding:28px 22px; } .done-sub{ font-size:16.5px; } }
+  @media (max-width:900px){ .next{ grid-template-columns:1fr; max-width:560px; margin-top:44px; } }
 </style>
 </head>
 <body>
@@ -123,36 +119,18 @@
 
   <section class="done">
     <div class="container">
-      <div class="check" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 40 40"><path d="M10 21l7 7 14-16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <h1>You're booked. This is where it starts.</h1>
-      <p class="done-sub">Your Relationship Reset Call is on the calendar. Here's how to get the most out of it.</p>
+      <span class="eyebrow eyebrow-ok"><svg width="14" height="14" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>You're Booked</span>
+      <h1><span class="imp">IMPORTANT:</span> Watch This Short Video <em>Before Your Call</em></h1>
+
+      <div class="vid-wrap">
+        <!-- CONFIRMATION_VIDEO_VOOMLY_ID: paste the Voomly video ID of Sophie's confirmation video into data-id below. -->
+        <div class="voomly-embed vid" data-id="CONFIRMATION_VIDEO_VOOMLY_ID" data-ratio="1.777778" data-type="v" data-skin-color="#154734" data-shadow=""></div>
+      </div>
 
       <div class="next">
         <div class="item"><div class="num">STEP 1</div><h3>Check your inbox</h3><p>Your confirmation and calendar invite are on the way. Add the call to your calendar now so it doesn't get lost.</p></div>
         <div class="item"><div class="num">STEP 2</div><h3>Find a private space</h3><p>Plan to take the call somewhere quiet where you can speak freely, with a good connection and no interruptions.</p></div>
         <div class="item"><div class="num">STEP 3</div><h3>Come as you are</h3><p>You don't need a plan or the right words. Bring what's happening and what you want. If you get emotional, that's okay.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="note">
-    <div class="container">
-      <div class="letter">
-        <p class="letter-open">Before your call,</p>
-        <p>I want you to know something. Booking this call took courage. When your marriage is hurting, it's easy to keep waiting for the right moment or for your spouse to go first.</p>
-        <p>Bill once told me, “If you put in all the effort for yourself, you cannot lose.” This call is the first piece of that effort, and you've already made it.</p>
-        <p>My team will be ready for you. I'm so glad you're here.</p>
-        <p style="margin-top:22px;">With love,</p>
-        <p class="letter-sign">Sophie</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="rewatch">
-    <div class="container narrow">
-      <h2>While you wait, watch Bill's story again</h2>
-      <div class="vid-wrap">
-        <div class="voomly-embed vid" data-id="lEAaiFpLzstboyAMxkglycKjFt2QCyDyBi1V2Jw3Mz7uUERzT" data-ratio="1.777778" data-type="v" data-skin-color="#154734" data-shadow=""></div>
       </div>
     </div>
   </section>
