@@ -6,8 +6,8 @@
   Paste into a GHL page's Custom Code (HTML) element with the default header/footer/theme off.
 
   QUICK-SWAP:
-    1) VIDEO — Sophie's confirmation video plays from Google Drive (same video on all 3 funnels).
-       Keep the Drive file shared as "Anyone with the link can view" or it won't play.
+    1) VIDEO — Sophie's confirmation video is the Wistia media isodmrwjhc (same video on all 3 funnels).
+       To change it, replace isodmrwjhc in the <head> script and on the <wistia-player> tag.
     2) TRACKING PIXELS — paste in the marked slot below. Fire your "Schedule" conversion event here.
 
   Headline options (live one is in the <h1>):
@@ -28,7 +28,9 @@
 
 <!-- ================= TRACKING PIXELS: paste Meta Pixel / Google Ads / GTM here ================= -->
 <!-- ================================================================================================ -->
-
+<script src="https://fast.wistia.com/player.js" async></script>
+<script src="https://fast.wistia.com/embed/isodmrwjhc.js" async type="module"></script>
+<style>wistia-player[media-id='isodmrwjhc']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/isodmrwjhc/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
 <style>
   :root{
     /* Sophie Orozco brand palette (same tokens as landing-page/landing.html) */
@@ -101,7 +103,7 @@
   }
 
   .done{ padding:22px 0 72px; text-align:center; }
-  .vid-frame{ display:block; border:0; }
+  .vid-wistia{ display:block; width:100%; border-radius:16px; overflow:hidden; box-shadow:0 34px 70px -36px rgba(21,71,52,.65); }
   .eyebrow-ok{ margin-top:26px; display:inline-flex; align-items:center; gap:7px; }
   .done h1{ margin:20px auto 34px; max-width:940px; font-family:var(--font-title); font-size:clamp(36px,5.2vw,62px); line-height:1.04; }
   .done h1 em{ font-style:italic; color:var(--pink); white-space:nowrap; }
@@ -125,11 +127,8 @@
       <h1><span class="imp">IMPORTANT:</span> Watch This Short Video <em>Before Your Call</em></h1>
 
       <div class="vid-wrap">
-        <!-- Sophie's confirmation video, embedded from Google Drive (file must stay shared as "Anyone with the link can view").
-             To move it to Voomly later, replace this iframe with:
-             <div class="voomly-embed vid" data-id="VOOMLY_ID" data-ratio="1.777778" data-type="v" data-skin-color="#154734" data-shadow=""></div>
-             and add <script src="https://embed.voomly.com/embed/embed-build.js"></script> to the <head>. -->
-        <iframe class="vid vid-frame" src="https://drive.google.com/file/d/1OTTY_4omV1EsketCOmJ23FTv-k0weZOr/preview" title="Watch this before your call" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <!-- Sophie's confirmation video (Wistia media isodmrwjhc). To change the video, replace isodmrwjhc here and in the <head> script. -->
+        <wistia-player class="vid-wistia" media-id="isodmrwjhc" aspect="1.7777777777777777"></wistia-player>
       </div>
 
       <div class="next">
