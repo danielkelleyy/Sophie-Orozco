@@ -34,7 +34,7 @@ Each page is one self-contained file: styles, photos and logos are all inside it
 - **VSL:** paste the player embed into the `.video-frame` on `video.html` and delete the placeholder "Your training is playing" overlay if the player has its own.
 - **Typeform (`hqoLrF3O`):** in Typeform, set "Redirect on completion" to the booking page URL, and use logic so applicants who don't qualify are redirected to the resources page instead. UTMs on the application page URL pass through to Typeform.
 - **Calendar:** paste the GHL / Calendly / OnceHub embed into `book-call.html`. Set the confirmation redirect to the confirmation page.
-- **Confirmation page:** pre-call video, meet-the-team video, pull quotes for Bill and Samantha, screenshot wall, one more FAQ. Client videos are the live Voomly embeds from the masterclass.
+- **Confirmation page:** Sophie's confirmation video is Wistia media `isodmrwjhc` (replace it in the 2 `<head>` lines and the `<wistia-player>` tag to change it). Client videos are live Voomly embeds.
 - **Opt-in page:** rating badge placeholder in the hero behind the popup.
 - **Everywhere:** tracking pixels in `<head>`, logo if you want it instead of the text wordmark.
 - Written releases must be on file for every client shown, and screenshots need names and faces redacted.

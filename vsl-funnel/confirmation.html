@@ -3,7 +3,7 @@
 <head>
 <!--
   SOPHIE OROZCO VSL FUNNEL, PAGE 5 of 5: CALL CONFIRMATION
-  Order: pre-call video, meet the team, client stories (Bill, Samantha, Jay case study videos + short videos + wins wall), about Sophie, podcast.
+  Order: hero, Sophie's Wistia confirmation video, client stories (Bill, Samantha, Jay case study videos + short videos + wins wall), about Sophie, podcast.
   Modeled on the Josh Hudson confirmation page (Competitors/Josh Hudson/callbookedconfirmationpage.png):
   scheduled banner, pre-call video, meet the team video, client success stories (videos + screenshot wall),
   about the founder, subscribe to channel.
@@ -15,6 +15,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Cormorant+Infant:ital,wght@1,400;1,500;1,600&family=Livvic:wght@400;500;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<!-- Sophie's confirmation video (Wistia media isodmrwjhc, "Sophie VSL v1"; same as the case study confirmation pages) -->
+<script src="https://fast.wistia.com/player.js" async></script>
+<script src="https://fast.wistia.com/embed/isodmrwjhc.js" async type="module"></script>
+<style>wistia-player[media-id='isodmrwjhc']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/isodmrwjhc/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
 <!-- ================= TRACKING PIXELS: paste Meta Pixel / Google Ads / GTM here (fire Schedule here) ================= -->
 <style>
 /* ===== Shared funnel styles (same on every page) ===== */
@@ -192,8 +196,7 @@ p{ margin:0; }
 }
 </style>
 <style>
-  .watch .video-frame{ max-width:860px; margin:30px auto 0; }
-  .team .video-frame{ max-width:860px; margin:30px auto 0; }
+  .watch wistia-player{ display:block; max-width:860px; margin:30px auto 0; border-radius:14px; overflow:hidden; box-shadow:0 30px 60px -30px rgba(0,0,0,.6); }
   /* Client stories */
   .proof{ position:relative; overflow:hidden; }
   .proof::before{ content:"\201C"; position:absolute; left:3%; top:-40px; font-family:var(--font-title); font-size:360px; line-height:1; color:rgba(214,147,138,.25); pointer-events:none; }
@@ -254,16 +257,8 @@ p{ margin:0; }
     <div class="container">
       <span class="pill">Important</span>
       <h2 class="h-lg" style="margin-top:16px;">Watch This Before Your Call</h2>
-      <div class="video-frame"><div class="ph">[VIDEO: pre-call video from Sophie]<small>16:9</small></div></div>
-    </div>
-  </section>
-
-  <!-- ================= MEET THE TEAM ================= -->
-  <section class="sec sec-light team center">
-    <div class="container">
-      <p class="kicker">Meet our team</p>
-      <h2 class="h-lg">The People You'll Be Talking To</h2>
-      <div class="video-frame"><div class="ph">[VIDEO: Meet the team]<small>16:9, Sophie and the coaching / consult team</small></div></div>
+      <!-- To change the video, replace isodmrwjhc here and in the 2 <head> lines above. -->
+      <wistia-player media-id="isodmrwjhc" aspect="1.7777777777777777"></wistia-player>
     </div>
   </section>
 
