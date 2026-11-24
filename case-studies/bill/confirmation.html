@@ -6,7 +6,8 @@
   Paste into a GHL page's Custom Code (HTML) element with the default header/footer/theme off.
 
   QUICK-SWAP:
-    1) CONFIRMATION_VIDEO_VOOMLY_ID — the Voomly ID of Sophie's confirmation video (same video on all 3 funnels).
+    1) VIDEO — Sophie's confirmation video plays from Google Drive (same video on all 3 funnels).
+       Keep the Drive file shared as "Anyone with the link can view" or it won't play.
     2) TRACKING PIXELS — paste in the marked slot below. Fire your "Schedule" conversion event here.
 
   Headline options (live one is in the <h1>):
@@ -27,7 +28,7 @@
 
 <!-- ================= TRACKING PIXELS: paste Meta Pixel / Google Ads / GTM here ================= -->
 <!-- ================================================================================================ -->
-<script src="https://embed.voomly.com/embed/embed-build.js"></script>
+
 <style>
   :root{
     /* Sophie Orozco brand palette (same tokens as landing-page/landing.html) */
@@ -100,6 +101,7 @@
   }
 
   .done{ padding:22px 0 72px; text-align:center; }
+  .vid-frame{ display:block; border:0; }
   .eyebrow-ok{ margin-top:26px; display:inline-flex; align-items:center; gap:7px; }
   .done h1{ margin:20px auto 34px; max-width:940px; font-family:var(--font-title); font-size:clamp(36px,5.2vw,62px); line-height:1.04; }
   .done h1 em{ font-style:italic; color:var(--pink); white-space:nowrap; }
@@ -123,8 +125,11 @@
       <h1><span class="imp">IMPORTANT:</span> Watch This Short Video <em>Before Your Call</em></h1>
 
       <div class="vid-wrap">
-        <!-- CONFIRMATION_VIDEO_VOOMLY_ID: paste the Voomly video ID of Sophie's confirmation video into data-id below. -->
-        <div class="voomly-embed vid" data-id="CONFIRMATION_VIDEO_VOOMLY_ID" data-ratio="1.777778" data-type="v" data-skin-color="#154734" data-shadow=""></div>
+        <!-- Sophie's confirmation video, embedded from Google Drive (file must stay shared as "Anyone with the link can view").
+             To move it to Voomly later, replace this iframe with:
+             <div class="voomly-embed vid" data-id="VOOMLY_ID" data-ratio="1.777778" data-type="v" data-skin-color="#154734" data-shadow=""></div>
+             and add <script src="https://embed.voomly.com/embed/embed-build.js"></script> to the <head>. -->
+        <iframe class="vid vid-frame" src="https://drive.google.com/file/d/1OTTY_4omV1EsketCOmJ23FTv-k0weZOr/preview" title="Watch this before your call" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
 
       <div class="next">
