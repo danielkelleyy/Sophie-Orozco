@@ -168,7 +168,7 @@
   <script>
     /* When a call is booked inside the Calendly widget, send the visitor to this funnel's confirmation page.
        CONFIRMATION_PAGE_URL: swap for this funnel's GHL confirmation step URL. */
-    var CONFIRMATION_PAGE_URL = 'confirmation.html';
+    var CONFIRMATION_PAGE_URL = 'https://connect.sophieorozco.com/bill-confirmation';
     window.addEventListener('message', function (e) {
       if (e.origin === 'https://calendly.com' && e.data && e.data.event === 'calendly.event_scheduled') {
         window.location.href = CONFIRMATION_PAGE_URL;
