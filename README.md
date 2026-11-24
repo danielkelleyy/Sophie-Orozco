@@ -36,7 +36,8 @@ Publish each page in GoHighLevel the same way as the masterclass page: one Custo
 ### Before they go live
 - **Link the steps.** Links between steps must be full live URLs; plain filenames like `booking.html` break inside GHL.
   - **Bill (done):** landing https://connect.sophieorozco.com/bill-landing-page → booking https://connect.sophieorozco.com/bill-call-booking → confirmation https://connect.sophieorozco.com/bill-confirmation
-  - **Samantha and Jay (still to do):** their landing buttons still point to `booking.html` (marked `BOOKING_PAGE_URL`) and their booking pages to `confirmation.html` (`CONFIRMATION_PAGE_URL`). Send their live step URLs and they'll be wired the same way.
+  - **Samantha (done):** landing https://connect.sophieorozco.com/sam-landing-page → booking https://connect.sophieorozco.com/sam-call-booking → confirmation https://connect.sophieorozco.com/sam-call-confirmation
+  - **Jay (still to do):** his landing buttons still point to `booking.html` (marked `BOOKING_PAGE_URL`) and his booking page to `confirmation.html` (`CONFIRMATION_PAGE_URL`). Send his live step URLs and they'll be wired the same way.
 - **Calendly redirect.** The booking page sends people to the confirmation page itself once they book, so each funnel gets its own thank-you page. If the Calendly event type has its own "redirect after booking" setting turned on, turn it off. Bookings are tagged `utm_campaign=bill`, `samantha` or `jay`, so you can see in Calendly which funnel each one came from.
 - **Confirmation video.** Sophie's confirmation video ("Sophie VSL v1") is the Wistia media `isodmrwjhc` on all 3 confirmation pages. To change the video, replace that ID in the 2 places it appears on each page (the `<head>` script and the `<wistia-player>` tag).
 - **Tracking pixels.** Use the slot in each `<head>`. Fire the Schedule conversion on the confirmation pages.
