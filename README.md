@@ -29,7 +29,7 @@ Search the file for these and replace them:
 |---|---|---|
 | 1 | `landing.html` | A "Client Testimonial" eyebrow, a headline about the client's marriage transformation, their case-study video (Voomly), a **Book a Call With My Team** button, the Featured In logos and a wall of client message screenshots with a second button |
 | 2 | `booking.html` | The Calendly booking widget (Relationship Reset Call), what happens on the call, and a quote from the client |
-| 3 | `confirmation.html` | "You're Booked" eyebrow, the headline "IMPORTANT: Watch This Short Video Before Your Call", Sophie's confirmation video (Wistia), and 3 next steps |
+| 3 | `confirmation.html` | Same layout as the VSL funnel confirmation page: "Your Call Is Scheduled" with Confirm via Text / WhatsApp buttons, Sophie's confirmation video (Wistia), client stories (the other two case studies, short client videos and the screenshot wall), About Sophie and the podcast. Each page leaves out its own client. |
 
 Publish each page in GoHighLevel the same way as the masterclass page: one Custom Code element per funnel step.
 
@@ -37,6 +37,7 @@ Publish each page in GoHighLevel the same way as the masterclass page: one Custo
 - **Link the steps.** On each landing page, swap `booking.html` (2 buttons, marked `BOOKING_PAGE_URL`) for that funnel's GHL booking step URL. On each booking page, set `CONFIRMATION_PAGE_URL` in the script near the bottom to that funnel's confirmation step URL.
 - **Calendly redirect.** The booking page sends people to the confirmation page itself once they book, so each funnel gets its own thank-you page. If the Calendly event type has its own "redirect after booking" setting turned on, turn it off. Bookings are tagged `utm_campaign=bill`, `samantha` or `jay`, so you can see in Calendly which funnel each one came from.
 - **Confirmation video.** Sophie's confirmation video ("Sophie VSL v1") is the Wistia media `isodmrwjhc` on all 3 confirmation pages. To change the video, replace that ID in the 2 places it appears on each page (the `<head>` script and the `<wistia-player>` tag).
+- **Confirm buttons.** Confirm via Text / WhatsApp send "Yes" to +1 760-450-5243, the same closer number as the VSL funnel. Search `17604505243` to change it.
 - **Tracking pixels.** Use the slot in each `<head>`. Fire the Schedule conversion on the confirmation pages.
 - **Headline options.** The comment at the top of each landing page lists alternative headlines.
 - **Permissions.** Each client must give written permission for their story and quotes to be used. All quotes come from machine transcripts (Bill: Ep 12, Samantha: YT-22, Jay: Ep 21), so check them against the audio.
